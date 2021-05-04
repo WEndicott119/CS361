@@ -1,0 +1,48 @@
+html{
+  background-color: grey;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  opacity: .75;
+}
+
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+
+.banner{
+  text-align: center;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.rules{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 3px solid black;
+  background-color: rgb(255, 229, 180);
+  opacity: .55;
+}
+
+.scrape{
+   text-align: center;
+   border: 3px solid black;
+   background-color: rgb(255, 229, 180);
+   opacity: .55;
+}
+
+form{
+  text-align: center;
+}
+
+.button:hover {
+  background: tan;
+  cursor: pointer;
+  transform: scale(1, 1);
+  border-radius: 3px;
+}
