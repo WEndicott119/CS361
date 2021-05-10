@@ -1,31 +1,38 @@
 const express = require("express");
 const app = express()
-app.set('port', 3546);
+app.set('port', 3547);
 
 const axios = require('axios');
-const cheerio = require('cheerio');
+const htmlParser = require("node-html-parser");
 
 app.use(express.static(__dirname + '/views'));
 
+
  axios.get('https://en.wikipedia.org/wiki/Justin_Herbert')
        .then(response => {
-       const html = response.data;
-       const $ = cheerio.load(html);
-       const scrapedata = $('.mw-parser-output').text();
 
-       console.log(scrapedata);
-   })
+        const html = htmlParser.parse(response.data);
+        const pageContent = html.querySelector(".mw-parser-output");
+
+        const pElements = pageContent.querySelectorAll("p");
+
+
+
+        console.log(pElements[2].rawText);
+       })
 
 .catch((error) => {
-console.log(error);
-});
+    console.log(error);
+  });
+
+
 
 app.get('/',function(req,res){
 res.status(200).sendFile(__dirname + '/views/index.html');
 });
 
 app.get('*', function(req,res){
-res.status(404).sendFile(__dirname + '/views/404.html');
+  res.status(404).sendFile(__dirname + '/views/404.html');
 });
 
 
