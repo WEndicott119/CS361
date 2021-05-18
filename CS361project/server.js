@@ -9,40 +9,36 @@ const htmlParser = require("node-html-parser");
 
 app.use(express.static(__dirname + '/views'));
 
+var data;
 
+app.get('/scrape', function(req, res){
 
- axios.get('https://en.wikipedia.org/wiki/Justin_Herbert')
-       .then(response => {
-      
-	const html = htmlParser.parse(response.data);
-	const pageContent = html.querySelector(".mw-parser-output");
+let word = req.query.word;
+let wikiLink = "https://en.wikipedia.org/wiki/" + word;
 
-	const pElements = pageContent.querySelectorAll("p");
+axios.get(wikiLink)
+      .then(response => {
 
+       const html = htmlParser.parse(response.data);
+       const pageContent = html.querySelector(".mw-parser-output");
+       const pElements = pageContent.querySelectorAll("p");
+       const elements = (pElements[2].rawText);
 
+       console.log(pElements[2].rawText);
+       console.log(pElements[1].rawText);
 
-	const elements = (pElements[2].rawText);
-	fs.writeFileSync('scrape.json', elements);
-
-	document.body.innerHTML = elements;
-
-        var textString = fs.readFileSync('scrape.json');
-        var note = JSON.parse(textString);
-
-	console.log(pElements[1].rawText);
-	console.log(pElements[2].rawText);
-       	})
+	res.send(pElements[2].rawText);
+	})
 
 	.catch((error) => {
-    	console.log(error);
-    	});
+   	console.log(error);
+ 	});
 
 
-
+});
 
 app.get('/',function(req,res){
 res.status(200).sendFile(__dirname + '/views/index.html');
-
 
 });
 
