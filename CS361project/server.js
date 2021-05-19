@@ -24,10 +24,7 @@ axios.get(wikiLink)
        const pElements = pageContent.querySelectorAll("p");
        const elements = (pElements[2].rawText);
 
-       console.log(pElements[2].rawText);
-       console.log(pElements[1].rawText);
-
-	res.send(pElements[2].rawText);
+	      res.send(pElements[2].rawText);
 	})
 
 	.catch((error) => {
@@ -51,4 +48,3 @@ app.get('*', function(req,res){
 // listen on port specified with node index.js XXXX
 app.listen(app.get('port'), () =>{
 console.log("LISTENING ON PORT 3000!")});
-
