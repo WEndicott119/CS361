@@ -20,7 +20,7 @@ Once your anser is submitted the correct text will be display no matter if you'r
 <h1>Translate:</h1>
 <!--This is where i'm going to have to scrape content from a page-->
 <div id="scrapperContent" class="scrape">
-<p><script language="JavaScript">
+<p><span><script language="JavaScript" id="textSp">
 <!--
 var r_text = new Array ();
 r_text[0] = "Todas las hojas son de color café";
@@ -29,43 +29,45 @@ r_text[2] = "He estado de paseo";
 r_text[3] = "En un dia de invierno";
 r_text[4] = "Si estuviera en L.A.";
 r_text[5] = "California soñando, en un día de invierno así";
-var i = Math.floor(7*Math.random())
+var i = Math.floor(6*Math.random())
 
 document.write(r_text[i]);
-
-//-->
-</script></p>
+</script><span></p>
 </div>
 
-<h1>Your answer is...</h1>
-<form>
+<h1>Your answer is... </h1>
+<form action="/myform" method="GET">
   <input style="width: 50%; height:40px;" type="text" id="userTranslation" placeholder="Your answer"<br>
 </form>
   <form>
-  <input onclick="fn1()" class="button" type="submit" value="Submit">
+  <input id="userSubmit" onclick="fn1()" class="button" type="submit" value="Submit">
 </form>
 
 <!--basic JS to try and compare the user input to the scrapped content-->
 <script type="text/javascript">
 
 var str = document.getElementById("userTranslation");
-var scrapper = document.getElementById("scrapperContent");
+var translated_text;
+// need to send the text to get translated then compare the translated text
+// to the user anser.
+//var scrapper = document.getElementById("textSp");
 var results = document.getElementById("check");
 
 function fn1()
 {
   var a = str.value;
-  var b = scrapper.value;
+  var b = r_text[i];
   var ans = a.localeCompare(b);
   var res = "";
 
   if (ans == 0) {
-      res = alert("The translation entered was correct!");
+      res = alert("The translation entered was correct! \n try again!");
     }
   else{
-    res = alert("The translation entered was incorrect");
+    res = alert("The translation entered was incorrect \n" + a + "\ntry again!");
   }
   results.innerHTML = res;
+  window.location.reload()
 }
 </script>
 
