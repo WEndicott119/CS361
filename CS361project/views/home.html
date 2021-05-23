@@ -1,9 +1,6 @@
 <html>
 <meta charset="utf-8">
 
-<html>
-<meta charset="utf-8">
-
 <link rel="stylesheet" href="style.css">
 <img class="center" src="https://thumbs.dreamstime.com/z/hello-word-cloud-collage-different-languages-world-background-concept-86609847.jpg" alt="alternatetext" style="width:500px;height:250px;">
 
@@ -13,45 +10,52 @@
   </div>
 </div>
 
+
 <h1>RULES:</h1>
 <div class="rules">
 <p>This app is used to practice your skills translating english into spanish. Just below is text in the English language. Your goal is to translate this text into Spanish.
 Once your anser is submitted the correct text will be display no matter if you're right or wrong.
-The text will be displayed close out the notification box to play again.</p>
+The text will be displayed in green if you're correct and red if we need to keep working.</p>
 </div>
 
 <h1>Translate:</h1>
 
 <!--This is where i'm going to have to scrape content from a page-->
-<div id="myData" class="scrape">
-<p id="scrapperContent" type="text">Herbert became the Chargers starting quarterback in the second game of his rookie year after Tyrod Taylor suffered a punctured lung in pre-game. He remained the starter for the rest of the season and set several rookie statistical records, including the most touchdown passes and the most 300-yard games, and was named the AP NFL Offensive Rookie of the Year in the process.</p>
+<div id="scrapperContent" class="scrape">
+<p>Herbert became the Chargers starting quarterback in the second game of his rookie year after Tyrod Taylor suffered a punctured lung in pre-game. He remained the starter for the rest of the season and set several rookie statistical records, including the most touchdown passes and the most 300-yard games, and was named the AP NFL Offensive Rookie of the Year in the process.</p>
 </div>
 
-
-
-<h1>Your answer..</h1>
+<h1>Your answer is...</h1>
 <form>
   <input style="width: 50%; height:40px;" type="text" id="userTranslation" placeholder="Your answer"<br>
 </form>
   <form>
   <input onclick="fn1()" class="button" type="submit" value="Submit">
 </form>
+
 <!--basic JS to try and compare the user input to the scrapped content-->
 <script type="text/javascript">
 
+var str = document.getElementById("userTranslation");
+var scrapper = document.getElementById("scrapperContent");
+var results = document.getElementById("check");
+
 function fn1()
 {
-  var str = document.getElementById("userTranslation").value;
- // var str2 = document.getElementById("scrapperContent").textContent;
-  var str2 = "Herbert se convirtió en el mariscal de campo titular de los Chargers en el segundo juego de su año de novato después de que Tyrod Taylor sufriera un pinchazo en el pulmón antes del juego. Permaneció como titular por el resto de la temporada y estableció varios récords estadísticos de novato, incluyendo la mayor cantidad de pases de touchdown y la mayor cantidad de juegos de 300 yardas, y fue nombrado Novato Ofensivo del Año de la NFL de la AP en el proceso."
-
-  if (str == str2) {
-      alert("The translation entered was correct! \n" + str2 + "\n play again");
+  var a = str.value;
+  var b = scrapper.value;
+  var ans = a.localeCompare(b);
+  var res = "";
+  
+  if (ans == 0) {
+      res = alert("The translation entered was correct!");
     }
   else{
-      alert("The translation entered was incorrect\n" + str + "\n Play again");
+    res = alert("The translation entered was incorrect");
   }
+  results.innerHTML = res;
 }
 </script>
+
 
 </html>

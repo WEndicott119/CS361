@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="style.css">
 <img class="center" src="https://thumbs.dreamstime.com/z/hello-word-cloud-collage-different-languages-world-background-concept-86609847.jpg" alt="alternatetext" style="width:500px;height:250px;">
 
+
 <div class="banner">
   <div class="header">
     <h1> Language Translation Game </h1>
@@ -13,63 +14,59 @@
 
 <h1>RULES:</h1>
 <div class="rules">
-<p>This app is used to practice your skills translating Spanish into English. Just below is text in the Spanish language. Your goal is to translate this text into English.
-Once your anser is submitted the correct text will be display no matter if you're right or wrong.</p>
+<p>This app is used to practice your skills translating English into Spanish. Just below is text in the English language that you will attempt to translate. 
+Once your anser is submitted your answer will be translated so you can compare it. Then you can see exactly where you're off without giving the answer away for later attempts. Then you can click play again to try multiple times. Enjoy!</p>
+<br>
+<p>If you feel you've mastered Spanish enjoying playing in any language you feel like learning!</p>
 </div>
 
 <h1>Translate:</h1>
-<!--This is where i'm going to have to scrape content from a page-->
+<!--This is where im going to have to scrape content from a page-->
 <div id="scrapperContent" class="scrape">
-<p><span><script language="JavaScript" id="textSp">
+<p><script language="JavaScript">
 <!--
 var r_text = new Array ();
-r_text[0] = "Todas las hojas son de color café";
-r_text[1] = "Y el cielo es gris";
-r_text[2] = "He estado de paseo";
-r_text[3] = "En un dia de invierno";
-r_text[4] = "Si estuviera en L.A.";
-r_text[5] = "California soñando, en un día de invierno así";
+r_text[0] = "All leaves are brown";
+r_text[1] = "And the sky is gray";
+r_text[2] = "I've been out for a walk";
+r_text[3] = "On a winter day";
+r_text[4] = "If I was in L.A.";
+r_text[5] = "California dreaming, on a winter's day like this";
 var i = Math.floor(6*Math.random())
 
 document.write(r_text[i]);
-</script><span></p>
+
+//-->
+</script></p>
 </div>
 
-<h1>Your answer is... </h1>
-<form action="/myform" method="GET">
+
+<h1>Your answer is...</h1>
+<form>
   <input style="width: 50%; height:40px;" type="text" id="userTranslation" placeholder="Your answer"<br>
 </form>
   <form>
-  <input id="userSubmit" onclick="fn1()" class="button" type="submit" value="Submit">
+  <input id="userSubmit" class="button" type="submit" value="Submit"><input id="try_again" onclick="fn1()" class="button" type="submit" value="try agian">
 </form>
 
-<!--basic JS to try and compare the user input to the scrapped content-->
-<script type="text/javascript">
+<div id="display" style="display:none" class="scrape">
+<h1>The correct translation is: </span><span id="translated_text"></span>
+</div>
 
-var str = document.getElementById("userTranslation");
-var translated_text;
-// need to send the text to get translated then compare the translated text
-// to the user anser.
-//var scrapper = document.getElementById("textSp");
-var results = document.getElementById("check");
+<script src="scripts.js"></script>
+
+<!--basic JS to try and compare the user input to the scrapped content-->
+
+
+
+<script type="text/javascript">
 
 function fn1()
 {
-  var a = str.value;
-  var b = r_text[i];
-  var ans = a.localeCompare(b);
-  var res = "";
-
-  if (ans == 0) {
-      res = alert("The translation entered was correct! \n try again!");
-    }
-  else{
-    res = alert("The translation entered was incorrect \n" + a + "\ntry again!");
-  }
-  results.innerHTML = res;
-  window.location.reload()
+ window.location.reload()
 }
 </script>
+
 
 
 </html>
