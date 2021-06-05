@@ -11,6 +11,8 @@ app.use(express.static(__dirname + '/views'));
 
 var data;
 
+
+//This is the scrapper to send my classmate text.
 app.get('/scrape', function(req, res){
 
 let word = req.query.word;

@@ -1,3 +1,5 @@
+
+//This is how i request the user text to be translated.
 document.getElementById('userSubmit').addEventListener('click', function(event){
 
 	var x = document.getElementById('display');
@@ -21,6 +23,8 @@ document.getElementById('userSubmit').addEventListener('click', function(event){
         var response = req.responseText;
         console.log(response);
 
+
+	//Sends the translated text back to the web page.
         document.getElementById('translated_text').textContent = response;
         }
         else {
