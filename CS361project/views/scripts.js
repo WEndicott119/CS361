@@ -36,30 +36,3 @@ document.getElementById('userSubmit').addEventListener('click', function(event){
         event.preventDefault();
 
 });
-
-/*document.getElementById('try_again').addEventListener('click', function(event){
-
-	var str = document.getElementById("translated_text");
-
-
-	var a = str.value;
-  	var b = r_text[i];
-  	var ans = a.localeCompare(b);
-  	var res = "";
-
-  if (ans == 0) {
-      res = alert("The translation entered was correct! \n trying again!");
-    }
-  else{
-    res = alert("The translation entered was incorrect \n trying again!");
-  }
-
-  results.innerHTML = res;
-
-
-
-window.location.reload()
-
-});
-*/
-
